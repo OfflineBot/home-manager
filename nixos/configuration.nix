@@ -1,0 +1,230 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ inputs, config, pkgs, ... }:
+
+{
+    imports =
+        [ # Include the results of the hardware scan.
+        ./hardware-configuration.nix
+        ];
+
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    #programs.ssh.askPassword = "/nix/store/k6478fi9mn4b2qv0z0adw5sbvizzbbg5-ksshaskpass-5.27.11/bin/ksshaskpass"; # For Plasma
+
+    services.displayManager.sddm = {
+        enable = true;
+        theme = "/usr/share/sddm/themes/sddm-sugar-candy";
+    };
+    services.xserver.displayManager.setupCommands = ''
+             xrandr --output HDMI-A-1 --auto --pos -1920x230 \
+                --output DP-3 --auto --pos 0x0 \
+                --output DP-2 --auto --pos 1920x330
+    '';
+
+    # Bootloader.
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
+    boot.supportedFilesystems = [ "ntfs" ];
+    
+    #fileSystems."/mnt/games" = {
+    #    device = "/dev/sdb1";
+    #    fsType = "ntfs-3g";
+    #    options = [ "rw" "uid=1000" "grid=100" "fmakst=0022" "dmask=0000" "utf8" ];
+    #};
+
+    # NVIDIA
+    # enable non-free NVIDIA drivers
+    services.xserver.videoDrivers = ["nvidia"];
+    #services.xserver.useGlamor = false; # not necessary
+    hardware.nvidia.open = false;
+
+    # use hardware acceleration
+    hardware.graphics.extraPackages = [ pkgs.nvidia-vaapi-driver ];
+
+    # enable NVIDA power management
+    hardware.nvidia.powerManagement.enable = true;
+
+    # DRM MODESET = 1
+    boot.kernelParams = [ "nvidia-drm.modeset=1" ];
+
+    # CUDA
+    # hardware.cudaSupport.enable = true;
+
+    networking.hostName = "nixos"; # Define your hostname.
+
+
+    systemd.services.xdg-desktop-portal-gtk = {
+        wantedBy = [ "graphical-session.target" ];
+    };
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+    # Configure network proxy if necessary
+    # networking.proxy.default = "http://user:password@proxy:port/";
+    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+    # Enable networking
+        networking.networkmanager.enable = true;
+
+    # Set your time zone.
+    time.timeZone = "Europe/Berlin";
+
+    # Select internationalisation properties.
+    i18n.defaultLocale = "en_US.UTF-8";
+
+    i18n.extraLocaleSettings = {
+        LC_ADDRESS = "de_DE.UTF-8";
+        LC_IDENTIFICATION = "de_DE.UTF-8";
+        LC_MEASUREMENT = "de_DE.UTF-8";
+        LC_MONETARY = "de_DE.UTF-8";
+        LC_NAME = "de_DE.UTF-8";
+        LC_NUMERIC = "de_DE.UTF-8";
+        LC_PAPER = "de_DE.UTF-8";
+        LC_TELEPHONE = "de_DE.UTF-8";
+        LC_TIME = "de_DE.UTF-8";
+    };
+
+    # Enable the X11 windowing system.
+    services.xserver.enable = true;
+
+    # Enable the GNOME Desktop Environment.
+    #services.xserver.displayManager.gdm.enable = false;
+    
+    services.xserver.desktopManager.gnome = {
+        enable = true;
+        #xdg-desktop-portal = "xdg-desktop-portal-gtk";
+    };
+    #services.xserver.desktopManager.plasma5.enable = true;
+    #services.desktopManager.plasma6.enable = true;
+
+    # Configure keymap in X11
+    services.xserver.xkb = {
+        layout = "de";
+        variant = "";
+    };
+
+    # Configure console keymap
+    console.keyMap = "de";
+
+    # Enable CUPS to print documents.
+    services.printing.enable = true;
+
+    # Enable sound with pipewire.
+    hardware.pulseaudio.enable = false;
+    security.rtkit.enable = true;
+    services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+        # If you want to use JACK applications, uncomment this
+        #jack.enable = true;
+
+        # use the example session manager (no others are packaged yet so this is enabled by default,
+        # no need to redefine it in your config for now)
+        #media-session.enable = true;
+    };
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    # services.xserver.libinput.enable = true;
+
+    # Define a user account. Don't forget to set a password with ‘passwd’.
+    users.users.offlinebot = {
+        isNormalUser = true;
+        description = "OfflineBot";
+        extraGroups = [ "networkmanager" "wheel" "input" "video"];
+        packages = with pkgs; [
+        #  thunderbird
+        ];
+    };
+
+#    home-manager = {
+#      backupFileExtension = "backup";
+#      useGlobalPkgs = true;
+#      useUserPackages = true;
+#
+#      users.offlinebot = { pkgs, ... }: {
+#        home.packages = [ pkgs.atool pkgs.httpie ];
+#        # programs.bash.enable = true;
+#        home.stateVersion = "24.05";
+#
+#      };
+#      
+#    };
+
+    # Install firefox.
+    programs.firefox.enable = true;
+
+    # Allow unfree packages
+    #nixpkgs.config.allowUnfree = true;
+
+    fonts.packages = with pkgs; [
+        (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+    ];
+
+    programs.steam = {
+        enable = true;
+        remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+            dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+            localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    };
+
+    # List packages installed in system profile. To search, run:
+    # $ nix search wget
+    programs.hyprland = {
+        enable = true;
+        xwayland.enable = true;
+        #xdg-desktop-portal = "xdg-desktop-portal-hyprland";
+    };
+    environment.systemPackages = with pkgs; [
+        #  wget
+        neovim
+        kitty
+        discord
+        git
+        wayland
+        breeze-gtk
+        btop
+        bash
+        libsForQt5.qt5.qtquickcontrols2
+        libsForQt5.qt5.qtgraphicaleffects
+        xorg.xrandr
+        #(callPackage ./sugar-candy.nix{}).sddm-sugar-candy-theme
+        #(catppuccin-sddm.override {
+        #    flavor = "mocha";
+        #    font  = "Noto Sans";
+        #    fontSize = "9";
+        #    background = /home/offlinebot/Pictures/active_wallpaper/darker_catpuccin.jpg;
+        #    loginBackground = true;
+        #  })
+    ];
+
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # programs.mtr.enable = true;
+    # programs.gnupg.agent = {
+    #   enable = true;
+    #   enableSSHSupport = true;
+    # };
+
+    # List services that you want to enable:
+
+    # Enable the OpenSSH daemon.
+    # services.openssh.enable = true;
+
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
+
+    # This value determines the NixOS release from which the default
+    # settings for stateful data, like file locations and database versions
+    # on your system were taken. It‘s perfectly fine and recommended to leave
+    # this value at the release version of the first install of this system.
+    # Before changing this value read the documentation for this option
+    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+    system.stateVersion = "24.11"; # Did you read the comment?
+
+}
