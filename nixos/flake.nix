@@ -36,10 +36,16 @@
             ];
         };
     in {
-        nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
             inherit system pkgs;
             modules = [ 
-                ./configuration.nix 
+                ./system/pc/configuration.nix
+            ];
+        };
+        nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+            inherit system pkgs;
+            modules = [
+                ./system/laptop/configuration.nix
             ];
         };
     };
