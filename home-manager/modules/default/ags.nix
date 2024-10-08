@@ -1,10 +1,10 @@
 { pkgs, ... }:
 let 
-    agsConfig = pkgs.fetchFromGitHub {
-        owner = "OfflineBot";
-        repo = "ags";
-        rev = "27ba829f0d95ca6a2ed0547978a5b8c8b53d9034";
-        sha256 = "0b3r1zxz4486xq0lp7bjnrvl0sqr3ngvmpfamfk6lr1ind2lkd8h";
+    agsConfig = pkgs.fetchgit {
+        rev = "43786b889bbe095513884c2d618996c8022a55b3";
+        url = "https://github.com/OfflineBot/nix_modules";
+        sha256 = "sha256-ELVJRbMxZGqmq8rdup8dGWtAd7ZynUsB7gYR8vsPeSw=";
+        branchName = "ags";
     };
 in
 {

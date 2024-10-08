@@ -1,10 +1,10 @@
 { pkgs, ... }:
 let 
-    nvimConfig = pkgs.fetchFromGitHub {
-        owner = "OfflineBot";
-        repo = "neovim";
-        rev = "8c2303214ae8eb942e0578e11b2bc46ad98f03db";
-        sha256 = "15rw8fs242iavx295pbhd027akiq023z1gjz3dr6z51xl017ly6m";
+    nvimConfig = pkgs.fetchgit {
+        rev = "c213b4e69f407e8d688b95052198f9c23a899fde";
+        url = "https://github.com/OfflineBot/nix_modules";
+        sha256 = "sha256-1Xh6AqA9lG9yG1++8IcAOE51BGhw3ZJE3yoKIrRDPJc=";
+        branchName = "neovim";
     };
 in
 {

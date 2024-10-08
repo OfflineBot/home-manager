@@ -1,17 +1,17 @@
 { pkgs, ... }:
 let 
-    hyprConfig = pkgs.fetchFromGitHub {
-        owner = "OfflineBot";
-        repo = "hyprland";
-        rev = "1e5200efc4bc8d61d80192ec01974bbba84d1ecd";
-        sha256 = "0lkrb7d6w8jhq8wgamyb57z7jyw52lhvcks8szkldg8pa8qqa68s";
+    hyprConfig = pkgs.fetchgit {
+        rev = "3387a1d4b9ce6f391aacfaf231eaf61c19f8472a";
+        url = "https://github.com/OfflineBot/nix_modules";
+        sha256 = "sha256-GhmFMVIXvUbn10hPtiEVhXt5/inLV/U4wlAibtpZeVI=";
+        branchName = "hyprland";
     };
 in
 {
     home.packages = [
     ];
 
-    home.file.".config/hypr" = {
+    home.file.".config/testing" = {
         source = "${hyprConfig}/.";
     };
 }
