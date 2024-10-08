@@ -38,11 +38,7 @@
     #};
 
     services.xserver.videoDrivers = ["amdgpu"];
-    hardware.opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-    };
+    hardware.graphics.enable = true;
     networking.hostName = "nixos"; # Define your hostname.
 
     systemd.services.xdg-desktop-portal-gtk = {
@@ -148,7 +144,7 @@
     programs.firefox.enable = true;
 
     # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
+    #nixpkgs.config.allowUnfree = true;
 
     fonts.packages = with pkgs; [
         (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
