@@ -12,6 +12,7 @@
     ];
 
     home.packages = with pkgs; [
+        nwg-look
         swaylock-effects
         vim
         tor-browser
