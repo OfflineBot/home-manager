@@ -12,6 +12,7 @@
     ];
 
     home.packages = with pkgs; [
+        swaylock-effects
         vim
         tor-browser
         tree
