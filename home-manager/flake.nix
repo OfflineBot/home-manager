@@ -23,14 +23,14 @@
 
                 extraSpecialArgs = { inherit inputs; };
 
-                modules = [ ./default.nix ];
+                modules = [ ./config_system/laptop.nix ];
             };
             pc = home-manager.lib.homeManagerConfiguration {
                 pkgs = import nixpkgs { inherit system; };
 
                 extraSpecialArgs = { inherit inputs; };
 
-                modules = [ ./default.nix ];
+                modules = [ ./config_system/pc.nix ];
         };
         };
     };
