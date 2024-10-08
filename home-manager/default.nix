@@ -43,6 +43,7 @@
         inputs.ags.homeManagerModules.default 
         ./modules/default.nix
     ];
+
     programs.ags = {
         enable = true;  # Enable AGS
 
