@@ -7,6 +7,10 @@
     nixpkgs.config.allowUnfree = true;
 
     home.stateVersion = "24.05"; # Please read the comment before ch    
+    nixpkgs.config.permittedInsecurePackages = [
+        "electron-25.9.0"
+    ];
+
     home.packages = with pkgs; [
         obsidian
         vim
