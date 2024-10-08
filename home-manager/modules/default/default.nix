@@ -3,10 +3,10 @@
     imports = [
         ./ags.nix
         ./bash.nix
-        #./hypr.nix
         ./image.nix
         ./kitty.nix
-        ./nvim.nix
+        #./nvim.nix
+        ./nixvim/default.nix
         ./zathura.nix
     ];
 }
