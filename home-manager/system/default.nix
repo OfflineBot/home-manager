@@ -41,6 +41,7 @@
         gimp
         lua
         lua-language-server
+        texliveFull
     ];
 
     imports = [ 
