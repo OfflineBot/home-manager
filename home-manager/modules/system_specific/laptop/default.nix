@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
     imports = [
-        ./default/default.nix
+        ./hyprland.nix
     ];
 }
