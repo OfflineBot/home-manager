@@ -8,7 +8,6 @@
 
     home.stateVersion = "24.05"; # Please read the comment before ch    
     home.packages = with pkgs; [
-        obsidian
         vim
         tor-browser
         tree
