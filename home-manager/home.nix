@@ -37,6 +37,7 @@
         gimp
         lua
         lua-language-server
+        latexFull
     ];
 
     imports = [ 
