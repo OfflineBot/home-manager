@@ -41,7 +41,7 @@
 
     imports = [ 
         inputs.ags.homeManagerModules.default 
-        ./modules/default.nix
+        ../modules/default.nix
     ];
 
     programs.ags = {
