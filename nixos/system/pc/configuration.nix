@@ -23,6 +23,7 @@
                 --output DP-2 --auto --pos 1920x330
     '';
 
+    services.flatpak.enable = true;
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
