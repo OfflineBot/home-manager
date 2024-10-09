@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
     imports = [
         ./ags.nix
