@@ -5,7 +5,7 @@ To use my NixOS setup simply clone this repo:
 
 `git clone -b testing https://github.com/OfflineBot/nixos.git` 
 
-and put the contents into a folder where its easily accessible. what always do: 
+and put the contents into a folder where its easily accessible. what i always do: 
 
 `mkdir -p ~/System` <br>
 `cp ./nixos/* ~/System`
