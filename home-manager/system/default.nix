@@ -12,6 +12,7 @@
     ];
 
     home.packages = with pkgs; [
+        grim
         nwg-look
         swaylock-effects
         vim
