@@ -2,7 +2,8 @@ My full NixOS setup for my PC and Laptop.
 
 # IMPORTANT
 the whole setup is moving to another branch called `main`! <br>
-so this is not going to be updated and will stay like this
+so this is not going to be updated and will stay like this. <br>
+right now its not finished and this is the active branch but in a few days this will be changed!
 
 ## How to install:
 To use my NixOS setup simply clone this repo: 
