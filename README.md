@@ -8,10 +8,8 @@ To use my NixOS setup simply clone this repo:
 and put the contents into a folder where its easily accessible. what always do: 
 (remember using sudo to install)
 
-`
-mkdir -p ~/System
-cp ./nixos/* ~/System
-`
+`mkdir -p ~/System` <br>
+`cp ./nixos/* ~/System`
 
 the home-manager standalone is required for my setup so follow this installation guide for standalone home-manager:
 
@@ -22,10 +20,8 @@ now everything should be setup for usage!
 ## How to use hardware configuration:
 For the main configuration.nix: 
 
-`
-cd ~/System/nixos
-sudo nixos-rebuild switch --flake .#laptop
-`
+`cd ~/System/nixos` <br>
+`sudo nixos-rebuild switch --flake .#laptop`
 
 here `#laptop` is used but there is also a config for `#pc` by simply replacing the `#laptop` with `#pc`.
 
@@ -41,10 +37,8 @@ for testing this out and with no idea of how to use nix language or hyprland con
 ## How to use home-manager:
 For the home-manager: 
 
-`
-cd ~/System/home-manager
-home-manager switch --flake .#laptop
-`
+`cd ~/System/home-manager` <br>
+`home-manager switch --flake .#laptop`
 
 like in hardware configuration: <br>
 here `#laptop` is used but there is also a config for `#pc` by simply replacing the `#laptop` with `#pc`.
