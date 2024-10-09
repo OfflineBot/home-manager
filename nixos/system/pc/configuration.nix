@@ -36,14 +36,7 @@
     };
     boot.supportedFilesystems = [ "ntfs" ];
 
-    
-    #fileSystems."/mnt/games" = {
-    #    device = "/dev/sdb1";
-    #    fsType = "ntfs-3g";
-    #    options = [ "rw" "uid=1000" "grid=100" "fmakst=0022" "dmask=0000" "utf8" ];
-    #};
-
-    # NVIDIA
+        # NVIDIA
     # enable non-free NVIDIA drivers
     services.xserver.videoDrivers = ["nvidia"];
     #services.xserver.useGlamor = false; # not necessary
