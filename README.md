@@ -6,12 +6,12 @@ To use my NixOS setup simply clone this repo:
 `git clone -b testing https://github.com/OfflineBot/nixos.git` 
 
 and put the contents into a folder where its easily accessible. what always do: 
-(remember using sudo to install)
 
 `mkdir -p ~/System` <br>
 `cp ./nixos/* ~/System`
 
-the home-manager standalone is required for my setup so follow this installation guide for standalone home-manager:
+the home-manager standalone is required for my setup so follow this installation guide for standalone home-manager: <br>
+(remember using sudo to install)
 
 <a href="https://nix-community.github.io/home-manager/index.xhtml#sec-install-standalone">Standalone Home-Manager</a>
 
