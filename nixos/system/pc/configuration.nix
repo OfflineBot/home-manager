@@ -25,9 +25,17 @@
 
     services.flatpak.enable = true;
     # Bootloader.
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+    #boot.loader.systemd-boot.enable = true;
+    #boot.loader.efi.canTouchEfiVariables = true;
+    boot.loader.grub = {
+        enable = true;
+        version = 2;
+        efiSupport = true;
+        device = "nodev";
+        useOSProber = true;
+    };
     boot.supportedFilesystems = [ "ntfs" ];
+
     
     #fileSystems."/mnt/games" = {
     #    device = "/dev/sdb1";
