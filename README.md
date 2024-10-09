@@ -54,3 +54,6 @@ the `~/System/home-manager/system/default.nix` is used as the home.nix
 
 ## whats missing:
 - i want to add the sddm theme management into configuration.nix so its not manually managed.
+
+## Current look:
+![Hyprland](./screenshots/hyprland.png)
