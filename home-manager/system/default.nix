@@ -12,6 +12,8 @@
     ];
 
     home.packages = with pkgs; [
+        wine
+        lutris
         slurp
         grim
         nwg-look
