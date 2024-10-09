@@ -35,7 +35,7 @@ in
             . /etc/bash_completion
         fi
 
-
+        export GTK_THEME="Adwaita-dark"
         # dark theme
         #gsettings set org.gnome.desktop.interface gtk-theme 'Breeze-Dark'
         #gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'

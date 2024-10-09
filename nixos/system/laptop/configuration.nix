@@ -179,6 +179,7 @@
         libsForQt5.qt5.qtquickcontrols2
         libsForQt5.qt5.qtgraphicaleffects
         xorg.xrandr
+        adwaita-icon-theme
         #(callPackage ./sugar-candy.nix{}).sddm-sugar-candy-theme
         #(catppuccin-sddm.override {
         #    flavor = "mocha";
