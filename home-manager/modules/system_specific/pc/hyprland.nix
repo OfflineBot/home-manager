@@ -11,7 +11,7 @@ in
     home.packages = [
     ];
 
-    home.file.".config/testing" = {
+    home.file.".config/hypr" = {
         source = "${hyprConfig}/.";
     };
 }
