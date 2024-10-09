@@ -1,9 +1,9 @@
 { pkgs, ... }:
 let 
     hyprConfig = pkgs.fetchgit {
-        rev = "3387a1d4b9ce6f391aacfaf231eaf61c19f8472a";
+        rev = "e7f2e30a9c65d73dc6d9af0e108bdbc82e097114";
         url = "https://github.com/OfflineBot/nix_modules";
-        sha256 = "sha256-GhmFMVIXvUbn10hPtiEVhXt5/inLV/U4wlAibtpZeVI=";
+        sha256 = "sha256-L68fWIwuf40YDrMxCcoJXnYf3i358ReQuINgcx8OwiQ=";
         branchName = "hyprland";
     };
 in
