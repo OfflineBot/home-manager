@@ -32,7 +32,6 @@
         nodejs
         clang-tools
         zathura
-        zathura-pdf-poppler
         font-awesome
         nerdfonts
         alacritty
